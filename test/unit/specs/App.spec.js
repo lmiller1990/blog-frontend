@@ -10,4 +10,4 @@ describe('App.vue', () => {
     expect(vm.$el.querySelector('h2').textContent).to.match(/Welcome/)
     expect(vm.$el.querySelectorAll('router-link').length).to.equal(3)
   })
-}) 
+})
