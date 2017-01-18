@@ -11,19 +11,27 @@ describe('Posts.vue', () => {
     moxios.uninstall()
   })
 
-  const vm = new Vue(Posts).$mount()
   it('renders title of posts retreived from an api', (done) => {
-    let data = vm.fetchPosts().then(function () {
-      console.log('stuff', data)
+    const vm = new Vue(Posts,{
+      el: document.createElement('div'),
+      render: (h) => h(Posts)
+    }).$mount()
+
+    let data = vm.fetchPosts().then(function() {
+      let posts = vm.$el.querySelectorAll('div')
+      for (let i = 0; i < posts.length; i++) {
+        expect(posts[i].textContent).to.equal(`Mock post ${i}`)
+      }
     }).then(done,done)
-    //console.log(data)
 
     moxios.wait(function () {
       moxios.requests.mostRecent().respondWith({
         status: 200,
-        responseText: 'Post 1, Post 2, Post 3!!!!!!!!!!!!!'
-      }).then(function () {
-        console.log('moxios responded')
+        response: {
+          result: [
+            { title: 'Mock post 0' }, { title: 'Mock post 1' }
+          ]
+        } 
       })
     })
   })
