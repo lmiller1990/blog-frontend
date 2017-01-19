@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-for="post in posts">{{ post.title }}</div>
+    <h2>{{ post.title }}</h2>
+    <div class="content">
+      {{ content }}
+    </div>
   </div>
 </template>
 
@@ -8,20 +11,20 @@
   import axios from 'axios'
 
   export default {
+    props: ['post'],
     data () {
       return {
-        posts: []
+        content: null
       }
     },
     created () {
-      this.fetchPosts()
+      this.fetchPostContent()
     },
     methods: {
-      fetchPosts () {
-        // return axios.get('https://pastebin.org/get')
-        return axios.get('http://localhost:3000/posts')
+      fetchPostContent () {
+        return axios.get(`http://localhost:3000/posts/${this.post.id}`)
           .then((response) => {
-            this.posts = response.data
+            this.content = response.data
           })
           .catch((error) => {
             console.log('Error:', error)

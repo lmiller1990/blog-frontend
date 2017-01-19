@@ -16,6 +16,7 @@ describe('Posts.vue', () => {
 
     vm.fetchPosts().then(() => {
       let posts = vm.$el.querySelectorAll('div')
+      expect(posts.length).to.equal(2)
       for (let i = 0; i < posts.length; i++) {
         expect(posts[i].textContent).to.equal(`Mock post ${i}`)
       }
@@ -24,11 +25,9 @@ describe('Posts.vue', () => {
     moxios.wait(() => {
       moxios.requests.mostRecent().respondWith({
         status: 200,
-        response: {
-          result: [
-            { title: 'Mock post 0' }, { title: 'Mock post 1' }
-          ]
-        } 
+        response: [ 
+          { title: 'Mock post 0' }, { title: 'Mock post 1' }
+        ]
       })
     })
   })
