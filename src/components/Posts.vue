@@ -19,7 +19,7 @@
     methods: {
       fetchPosts () {
         // return axios.get('https://pastebin.org/get')
-        return axios.get('http://localhost:3000/posts')
+        return axios.get('http://191.167.3.2/posts')
           .then((response) => {
             this.posts = response.data
           })

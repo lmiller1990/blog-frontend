@@ -22,7 +22,7 @@
     },
     methods: {
       fetchPostContent () {
-        return axios.get(`http://localhost:3000/posts/${this.post.id}`)
+        return axios.get(`http://191.167.3.2/posts/${this.post.id}`)
           .then((response) => {
             this.content = response.data
           })
