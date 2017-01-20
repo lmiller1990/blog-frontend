@@ -16,4 +16,8 @@ export default {
 </script>
 
 <style>
+div {
+  text-align: center;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
 </style>

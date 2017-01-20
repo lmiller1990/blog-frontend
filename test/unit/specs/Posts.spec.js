@@ -15,10 +15,11 @@ describe('Posts.vue', () => {
     const vm = new Vue(Posts).$mount()
 
     vm.fetchPosts().then(() => {
-      let posts = vm.$el.querySelectorAll('div')
+      console.log(vm.$el)
+      let posts = vm.$el.querySelectorAll('router-link')
       expect(posts.length).to.equal(2)
       for (let i = 0; i < posts.length; i++) {
-        expect(posts[i].textContent).to.equal(`Mock post ${i}`)
+        expect(posts[i].textContent.trim()).to.equal(`Mock post ${i}`)
       }
     }).then(done,done)
 
