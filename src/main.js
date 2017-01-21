@@ -10,6 +10,7 @@ import Post from './components/Post'
 import NewPost from './components/NewPost'
 import EditPost from './components/EditPost'
 import Resume from './components/Resume'
+import NewUserForm from './components/NewUserForm'
 
 Vue.use(VueRouter)
 
@@ -17,9 +18,10 @@ const routes = [
   { path: '/about', component: About },
   { path: '/posts/new', component: NewPost },
   { path: '/posts/edit/:id', component: EditPost },
-  { path: '/posts', component: Posts },
   { path: '/posts/:id', name: 'post', component: Post },
-  { path: '/resume', component: Resume }
+  { path: '/posts', component: Posts },
+  { path: '/resume', component: Resume },
+  { path: '/signup', component: NewUserForm }
 ]
 
 const router = new VueRouter({
