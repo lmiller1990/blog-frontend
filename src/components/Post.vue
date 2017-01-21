@@ -1,10 +1,14 @@
 <template>
   <div>
-    <button v-if="!editing" @click="edit">Edit</button>
     <div v-if="post">
-      <input :style="isEditing" class="post title" v-model="post.title" />
-      <textarea :style="isEditing" class="post content" v-model="post.content"></textarea>
+      <div class="post title">
+        {{ post.title }}
+      </div><br />
+      <div v-for="line in post.content.split('\n')" class="post content">
+        {{ line }}<br />
+      </div>
     </div>
+    <button @click="edit">Edit</button>
   </div>
 </template>
 
@@ -14,8 +18,7 @@
   export default {
     data () {
       return {
-        post: null,
-        editing: false
+        post: null
       }
     },
     created () {
@@ -24,16 +27,9 @@
     watch: {
       '$route': 'fetchPostContent'
     },
-    computed: {
-      isEditing () {
-        return this.editing
-          ? { }
-          : { 'border': 'none', 'outline': 'none' }
-      }
-    },
     methods: {
       edit () {
-        this.editing = true
+
       },
       fetchPostContent () {
         return axios.get(`http://191.167.3.2/posts/${this.$route.params.id}`)
@@ -49,15 +45,18 @@
 </script>
 
 <style scoped>
-  input {
-    width: 50%;
+  .post {
+    margin-left: 10%;
+    width: 80%;
+    white-space: normal;
+  }
+  .title {
     text-align: center;
-    font-size: 2.8em;
+    font-size: 2.7em;
   }
 
-  textarea {
-    width: 50%;
-    text-align: center;
+  .content {
+    text-align: justify;
     font-size: 1.7em;
   }
 </style>
