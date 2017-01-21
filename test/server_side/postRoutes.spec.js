@@ -1,7 +1,8 @@
-const request = require('supertest')
+const request  = require('supertest')
 const Bluebird = require('bluebird')
-const app = require('../../app')
-const expect = require('chai').expect
+const app      = require('../../app')
+const expect   = require('chai').expect
+const models   = require('../../models')
 
 describe('/posts', function() {
   before(function() {
@@ -9,7 +10,7 @@ describe('/posts', function() {
   })
 
   beforeEach(function() {
-    this.models = require('../../models')
+    this.models = models 
 
     return Bluebird.all([
       this.models.Post.destroy({

@@ -1,5 +1,6 @@
 const Bluebird = require('bluebird')
 const expect   = require('chai').expect
+const models   = require('../../models')
 
 describe('User', function() {
   before(function() {
@@ -7,8 +8,7 @@ describe('User', function() {
   })
 
   beforeEach(function() {
-    this.models = require('../../models')
-
+    this.models = models
     return  Bluebird.all([
       this.models.User.destroy({
         truncate: true
