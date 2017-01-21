@@ -22,16 +22,16 @@
       }
     },
     created () {
-      this.fetchPostContent()
+      this.fetchPost()
     },
     watch: {
-      '$route': 'fetchPostContent'
+      '$route': 'fetchPost'
     },
     methods: {
       edit () {
-
+        this.$router.push(`/posts/edit/${this.$route.params.id}`)
       },
-      fetchPostContent () {
+      fetchPost () {
         return axios.get(`http://191.167.3.2/posts/${this.$route.params.id}`)
           .then((response) => {
             this.post = response.data[0]
