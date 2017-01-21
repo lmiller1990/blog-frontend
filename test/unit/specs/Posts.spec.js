@@ -11,9 +11,24 @@ describe('Posts.vue', () => {
     moxios.uninstall()
   })
 
-  it('renders title of posts retreived from an api', (done) => {
-    const vm = new Vue(Posts).$mount()
+  it('recieves posts from an from api', (done) => {
+    const Component = new (Vue.extend(Posts))()
 
+    Component.fetchPosts().then(() => {
+      expect(Component.posts.length).to.equal(2)
+    }).then(done, done)
+
+    moxios.wait(() => {
+      moxios.requests.mostRecent().respondWith({
+        status: 200,
+        response: [ 
+          { title: 'Mock post 0' }, { title: 'Mock post 1' }
+        ]
+      }).then(() => { console.log('Respnded') })
+    })
+  })
+  /*  it('renders title of posts retreived from an api', (done) => {
+    const vm = new Vue(Posts).$mount()
     vm.fetchPosts().then(() => {
       console.log(vm.$el)
       let posts = vm.$el.querySelectorAll('router-link')
@@ -31,5 +46,5 @@ describe('Posts.vue', () => {
         ]
       })
     })
-  })
+  })*/
 })

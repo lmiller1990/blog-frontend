@@ -30,7 +30,7 @@
         autosize(event.srcElement)
       },
       submitPost () {
-        return axios.post('http://191.167.3.2/posts/create', {
+        return axios.post('http://localhost:3000/posts/create', {
           title: this.post.title,
           content: this.post.content
         })

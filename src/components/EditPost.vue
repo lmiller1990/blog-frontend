@@ -30,7 +30,7 @@
         autosize(event.srcElement)
       },
       savePost () {
-        return axios.post(`http://191.167.3.2/posts/update/${this.$route.params.id}`, {
+        return axios.post(`http://localhost:3000/posts/update/${this.$route.params.id}`, {
           title: this.post.title,
           content: this.post.content
         })
@@ -43,7 +43,7 @@
         })
       },
       fetchPost () {
-        return axios.get(`http://191.167.3.2/posts/${this.$route.params.id}`)
+        return axios.get(`http://localhost:3000/posts/${this.$route.params.id}`)
           .then((response) => {
             this.post = response.data[0]
           })

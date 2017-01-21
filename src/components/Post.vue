@@ -32,7 +32,7 @@
         this.$router.push(`/posts/edit/${this.$route.params.id}`)
       },
       fetchPost () {
-        return axios.get(`http://191.167.3.2/posts/${this.$route.params.id}`)
+        return axios.get(`http://localhost:3000/posts/${this.$route.params.id}`)
           .then((response) => {
             this.post = response.data[0]
           })
@@ -50,6 +50,7 @@
     width: 80%;
     white-space: normal;
   }
+
   .title {
     text-align: center;
     font-size: 2.7em;
