@@ -19,6 +19,25 @@ describe('/users', function() {
     ])
   })
 
+  it('/login logs in', function(done) {
+    const self = this
+    this.models.User.create({
+      username: 'user',
+      password: 'pass'
+    }).then((user) => {
+      request(app)
+      .post('/users/login')
+      .type('form')
+      .set('Accept', /application\/json/)
+        .send({
+          username: 'user',
+          password: 'pass'
+        }).end((err, res) => {
+          done()
+        })
+    })
+  })
+
   it('/create persists a new user', function(done) {
     const self = this
     request(app)

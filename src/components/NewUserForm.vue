@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     data () {
       return {
@@ -19,7 +21,16 @@
     },
     methods: {
       createAccount () {
-
+        return axios.post('http://localhost:3000/users/create', {
+          username: this.username,
+          password: this.password
+        })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error)
+        })
       }
     }
   }

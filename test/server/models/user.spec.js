@@ -59,6 +59,7 @@ describe('User', function() {
       username: 'Test User',
       password: password
     }).then(function(user) {
+      console.log(user)
       user.verifyPassword(correctGuess).then((result) => {
         expect(result).to.equal(true)
         done()
