@@ -1,12 +1,12 @@
 const request  = require('supertest')
 const Bluebird = require('bluebird')
-const app      = require('../../app')
+const app      = require('../../../app')
 const expect   = require('chai').expect
-const models   = require('../../models')
+const models   = require('../../../models')
 
 describe('/posts', function() {
   before(function() {
-    return require('../../models').sequelize.sync()
+    return require('../../../models').sequelize.sync()
   })
 
   beforeEach(function() {

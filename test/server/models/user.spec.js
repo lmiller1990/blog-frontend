@@ -1,10 +1,10 @@
 const Bluebird = require('bluebird')
 const expect   = require('chai').expect
-const models   = require('../../models')
+const models   = require('../../../models')
 
 describe('User', function() {
   before(function() {
-    return require('../../models').sequelize.sync()
+    return require('../../../models').sequelize.sync()
   })
 
   beforeEach(function() {
@@ -64,5 +64,5 @@ describe('User', function() {
         done()
       })
     })
-  })
+ })
 })
