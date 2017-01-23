@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h2>Create a post</h2>
     <textarea class="post title" v-model="post.title">
     </textarea>
@@ -46,15 +46,13 @@
 </script>
 
 <style scoped>
-  input {
-    width: 50%;
-    text-align: center;
-    font-size: 2.8em;
-  }
-
   textarea {
     width: 50%;
     text-align: center;
     font-size: 1.7em;
+  }
+
+  .container {
+    text-align: center;
   }
 </style>

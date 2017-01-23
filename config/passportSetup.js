@@ -27,9 +27,16 @@ module.exports = function() {
         username: username
       }
     }).then(function(user) {
+      if (!user) {
+        return done(null, false, 'User does not exist.')
+      }
       user.verifyPassword(password)
         .then((res) => {
-          if (res) { return done(null, user) }
+          if (res) { 
+            return done(null, user) 
+          } else {
+            return done(null, false, 'Invalid password.')
+          }
         })
         .catch((err) => { console.log('Error validating:', err) 
           return done(null, false) })

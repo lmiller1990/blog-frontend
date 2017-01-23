@@ -4,6 +4,7 @@
     <router-link to="/Posts">Posts</router-link>
     <router-link to="/About">About</router-link>
     <router-link to="/Resume">Resume</router-link>
+    <router-link v-if="$store.state.loggedIn" to="/posts/new">New Post</router-link>
   </div>
 </template>
 

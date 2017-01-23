@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import store from './store/store'
 
 import About from './components/About'
 import Posts from './components/Posts'
 import Post from './components/Post'
 import NewPost from './components/NewPost'
 import EditPost from './components/EditPost'
+import LoginForm from './components/LoginForm'
 import Resume from './components/Resume'
 import NewUserForm from './components/NewUserForm'
 
@@ -21,7 +23,8 @@ const routes = [
   { path: '/posts/:id', name: 'post', component: Post },
   { path: '/posts', component: Posts },
   { path: '/resume', component: Resume },
-  { path: '/signup', component: NewUserForm }
+  { path: '/signup', component: NewUserForm },
+  { path: '/login', component: LoginForm }
 ]
 
 const router = new VueRouter({
@@ -31,6 +34,7 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
   components: { App }
